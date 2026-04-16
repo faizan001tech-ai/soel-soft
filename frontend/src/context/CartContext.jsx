@@ -20,11 +20,6 @@ export const CartProvider = ({ children }) => {
     }
   }, [isAuthenticated]);
 
-  const getAuthHeaders = () => {
-    const token = localStorage.getItem('token');
-    return { Authorization: `Bearer ${token}` };
-  };
-
   const fetchCart = async () => {
     try {
       setLoading(true);
@@ -53,10 +48,9 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = async (productId, quantity) => {
     try {
-      const response = await axios.put(
+      const response = await api.put(
         `/api/cart/${productId}`,
-        { quantity },
-        { headers: getAuthHeaders() }
+        { quantity }
       );
       setCart(response.data);
     } catch (error) {
@@ -66,9 +60,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (productId) => {
     try {
-      const response = await axios.delete(`/api/cart/${productId}`, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.delete(`/api/cart/${productId}`);
       setCart(response.data);
       toast.success('Item removed from cart');
     } catch (error) {
@@ -78,7 +70,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      await axios.delete('/api/cart', { headers: getAuthHeaders() });
+      await api.delete('/api/cart');
       setCart({ items: [] });
     } catch (error) {
       toast.error('Failed to clear cart');
