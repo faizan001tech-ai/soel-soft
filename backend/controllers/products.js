@@ -96,6 +96,15 @@ export const getBestsellers = async (req, res) => {
 // @access  Private/Admin
 export const createProduct = async (req, res) => {
   try {
+    // Validate discount value
+    let discount = req.body.discount || 0;
+    if (discount < 0) {
+      discount = 0;
+    }
+    if (discount > 100) {
+      discount = 100;
+    }
+
     const product = new Product({
       name: req.body.name,
       price: req.body.price,
@@ -106,7 +115,7 @@ export const createProduct = async (req, res) => {
       stock: req.body.stock,
       featured: req.body.featured || false,
       bestseller: req.body.bestseller || false,
-      discount: req.body.discount || 0,
+      discount: discount,
     });
 
     const createdProduct = await product.save();
@@ -133,7 +142,16 @@ export const updateProduct = async (req, res) => {
       product.stock = req.body.stock !== undefined ? req.body.stock : product.stock;
       product.featured = req.body.featured !== undefined ? req.body.featured : product.featured;
       product.bestseller = req.body.bestseller !== undefined ? req.body.bestseller : product.bestseller;
-      product.discount = req.body.discount !== undefined ? req.body.discount : product.discount;
+
+      // Validate discount value
+      let discount = req.body.discount !== undefined ? req.body.discount : product.discount;
+      if (discount < 0) {
+        discount = 0;
+      }
+      if (discount > 100) {
+        discount = 100;
+      }
+      product.discount = discount;
 
       const updatedProduct = await product.save();
       res.json(updatedProduct);
