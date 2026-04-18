@@ -42,17 +42,18 @@ const Navbar = () => {
       ref={navRef}
       className="sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300"
       style={{
-        backgroundColor: 'rgba(15, 23, 42, 0.85)',
-        borderColor: 'rgba(212, 175, 55, 0.2)'
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        borderColor: 'rgba(59, 130, 246, 0.3)',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <ShoppingBag className="h-8 w-8" style={{ color: '#D4AF37' }} />
+            <ShoppingBag className="h-8 w-8" style={{ color: '#3B82F6' }} />
             <span className="text-xl font-bold" style={{ 
-              background: 'linear-gradient(135deg, #D4AF37 0%, #F9FAFB 50%, #D4AF37 100%)',
+              background: 'linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -66,9 +67,9 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 className="font-medium transition-all duration-200 hover:scale-105"
-                style={{ color: '#F9FAFB' }}
-                onMouseEnter={(e) => e.target.style.color = '#D4AF37'}
-                onMouseLeave={(e) => e.target.style.color = '#F9FAFB'}
+                style={{ color: '#1F2937' }}
+                onMouseEnter={(e) => e.target.style.color = '#3B82F6'}
+                onMouseLeave={(e) => e.target.style.color = '#1F2937'}
               >
                 {link.label}
               </Link>
@@ -82,13 +83,13 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="p-2 rounded-lg transition-all duration-200 hover:scale-110"
               style={{ backgroundColor: 'transparent' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               {isDarkMode ? (
-                <Sun className="h-5 w-5" style={{ color: '#D4AF37' }} />
+                <Sun className="h-5 w-5" style={{ color: '#F59E0B' }} />
               ) : (
-                <Moon className="h-5 w-5" style={{ color: '#F9FAFB' }} />
+                <Moon className="h-5 w-5" style={{ color: '#3B82F6' }} />
               )}
             </button>
 
@@ -97,10 +98,10 @@ const Navbar = () => {
               to="/wishlist"
               className="relative p-2 rounded-lg transition-all duration-200 hover:scale-110"
               style={{ backgroundColor: 'transparent' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <Heart className="h-5 w-5" style={{ color: '#F9FAFB' }} />
+              <Heart className="h-5 w-5" style={{ color: '#1F2937' }} />
               {wishlistCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {wishlistCount}
@@ -113,13 +114,13 @@ const Navbar = () => {
               to="/cart"
               className="relative p-2 rounded-lg transition-all duration-200 hover:scale-110"
               style={{ backgroundColor: 'transparent' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <ShoppingCart className="h-5 w-5" style={{ color: '#F9FAFB' }} />
+              <ShoppingCart className="h-5 w-5" style={{ color: '#1F2937' }} />
               {cartItemsCount > 0 && (
                 <span className="absolute -top-1 -right-1 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
-                  style={{ backgroundColor: '#D4AF37', color: '#0F172A' }}
+                  style={{ backgroundColor: '#3B82F6', color: '#FFFFFF' }}
                 >
                   {cartItemsCount}
                 </span>
@@ -133,15 +134,15 @@ const Navbar = () => {
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
                   className="flex items-center space-x-2 p-2 rounded-lg transition-all duration-200"
                   style={{ backgroundColor: 'transparent' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
                   {user?.avatar ? (
                     <img src={user.avatar} alt={user.name} className="h-8 w-8 rounded-full" />
                   ) : (
-                    <User className="h-5 w-5" style={{ color: '#F9FAFB' }} />
+                    <User className="h-5 w-5" style={{ color: '#1F2937' }} />
                   )}
-                  <span className="hidden sm:block text-sm font-medium" style={{ color: '#F9FAFB' }}>
+                  <span className="hidden sm:block text-sm font-medium" style={{ color: '#1F2937' }}>
                     {user?.name}
                   </span>
                   <ChevronDown className="h-4 w-4" style={{ color: '#9CA3AF' }} />
@@ -151,17 +152,18 @@ const Navbar = () => {
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-2 w-48 rounded-lg py-1 shadow-xl"
                     style={{ 
-                      backgroundColor: '#111827', 
-                      border: '1px solid rgba(212, 175, 55, 0.3)'
+                      backgroundColor: '#FFFFFF', 
+                      border: '1px solid rgba(59, 130, 246, 0.3)',
+                      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                     }}
                   >
                     <Link
                       to="/dashboard"
                       onClick={() => setIsProfileOpen(false)}
                       className="flex items-center px-4 py-2 text-sm transition-all duration-200"
-                      style={{ color: '#F9FAFB' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
+                      style={{ color: '#1F2937' }}
+                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'; e.currentTarget.style.color = '#3B82F6'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#1F2937'; }}
                     >
                       <LayoutDashboard className="h-4 w-4 mr-2" />
                       Dashboard
@@ -171,9 +173,9 @@ const Navbar = () => {
                         to="/admin"
                         onClick={() => setIsProfileOpen(false)}
                         className="flex items-center px-4 py-2 text-sm transition-all duration-200"
-                        style={{ color: '#F9FAFB' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
+                        style={{ color: '#1F2937' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'; e.currentTarget.style.color = '#3B82F6'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#1F2937'; }}
                       >
                         <LayoutDashboard className="h-4 w-4 mr-2" />
                         Admin Panel
@@ -197,9 +199,9 @@ const Navbar = () => {
                 <Link
                   to="/login"
                   className="font-medium px-3 py-2 transition-all duration-200"
-                  style={{ color: '#F9FAFB' }}
-                  onMouseEnter={(e) => e.target.style.color = '#D4AF37'}
-                  onMouseLeave={(e) => e.target.style.color = '#F9FAFB'}
+                  style={{ color: '#1F2937' }}
+                  onMouseEnter={(e) => e.target.style.color = '#3B82F6'}
+                  onMouseLeave={(e) => e.target.style.color = '#1F2937'}
                 >
                   Login
                 </Link>
@@ -207,8 +209,8 @@ const Navbar = () => {
                   to="/register"
                   className="text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105"
                   style={{ 
-                    background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
-                    color: '#0F172A'
+                    background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
+                    color: '#FFFFFF'
                   }}
                 >
                   Sign Up
@@ -221,13 +223,13 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg transition-all duration-200"
               style={{ backgroundColor: 'transparent' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6" style={{ color: '#F9FAFB' }} />
+                <X className="h-6 w-6" style={{ color: '#1F2937' }} />
               ) : (
-                <Menu className="h-6 w-6" style={{ color: '#F9FAFB' }} />
+                <Menu className="h-6 w-6" style={{ color: '#1F2937' }} />
               )}
             </button>
           </div>
@@ -235,7 +237,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}>
+          <div className="md:hidden py-4" style={{ borderTop: '1px solid rgba(59, 130, 246, 0.2)' }}>
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <Link
@@ -243,9 +245,9 @@ const Navbar = () => {
                   to={link.to}
                   onClick={() => setIsMenuOpen(false)}
                   className="font-medium px-3 py-2 rounded-lg transition-all duration-200"
-                  style={{ color: '#F9FAFB' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
+                  style={{ color: '#1F2937' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'; e.currentTarget.style.color = '#3B82F6'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#1F2937'; }}
                 >
                   {link.label}
                 </Link>
