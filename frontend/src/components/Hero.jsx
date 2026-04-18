@@ -103,10 +103,10 @@ const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} className="relative h-[600px] lg:h-[700px] overflow-hidden">
+    <section ref={heroRef} className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
       <Slider {...settings} className="h-full">
         {slides.map((slide, index) => (
-          <div key={slide.id} className="relative h-[600px] lg:h-[700px]">
+          <div key={slide.id} className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
             {/* Background Image */}
             <div 
               ref={(el) => (slidesRef.current[index] = el)}
@@ -125,25 +125,25 @@ const Hero = () => {
             <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
               <div className="max-w-xl text-white">
                 {/* Logo */}
-                <div className="hero-animate flex items-center space-x-2 mb-4">
-                  <ShoppingBag className="h-5 w-5 text-primary-400" />
-                  <span className="text-primary-400 font-medium tracking-wide uppercase text-sm">
+                <div className="hero-animate flex items-center space-x-2 mb-2 md:mb-4">
+                  <ShoppingBag className="h-4 w-4 md:h-5 md:w-5 text-primary-400" />
+                  <span className="text-primary-400 font-medium tracking-wide uppercase text-xs md:text-sm">
                     Premium Fashion
                   </span>
                 </div>
-                <h1 className="hero-animate hero-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                <h1 className="hero-animate hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 md:mb-4">
                   {slide.title}
                 </h1>
-                <p className="hero-animate hero-subtitle text-lg md:text-xl text-gray-200 mb-8">
+                <p className="hero-animate hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8">
                   {slide.subtitle}
                 </p>
                 <div className="hero-animate hero-cta">
                   <Link
                     to={slide.link}
-                    className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    className="inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base"
                   >
                     {slide.cta}
-                    <ChevronRight className="ml-2 h-5 w-5" />
+                    <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </Link>
                 </div>
               </div>
