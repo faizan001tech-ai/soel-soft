@@ -40,14 +40,23 @@ const Navbar = () => {
   return (
     <nav 
       ref={navRef}
-      className="sticky top-0 z-50 w-full glass dark:glass-dark backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-300"
+      className="sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300"
+      style={{
+        backgroundColor: 'rgba(15, 23, 42, 0.85)',
+        borderColor: 'rgba(212, 175, 55, 0.2)'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <ShoppingBag className="h-8 w-8 text-primary-600" />
-            <span className="text-xl font-bold gradient-text">SoleStyle</span>
+            <ShoppingBag className="h-8 w-8" style={{ color: '#D4AF37' }} />
+            <span className="text-xl font-bold" style={{ 
+              background: 'linear-gradient(135deg, #D4AF37 0%, #F9FAFB 50%, #D4AF37 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>SoleStyle</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,7 +65,10 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors"
+                className="font-medium transition-all duration-200 hover:scale-105"
+                style={{ color: '#F9FAFB' }}
+                onMouseEnter={(e) => e.target.style.color = '#D4AF37'}
+                onMouseLeave={(e) => e.target.style.color = '#F9FAFB'}
               >
                 {link.label}
               </Link>
@@ -68,21 +80,27 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg transition-all duration-200 hover:scale-110"
+              style={{ backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               {isDarkMode ? (
-                <Sun className="h-5 w-5 text-yellow-500" />
+                <Sun className="h-5 w-5" style={{ color: '#D4AF37' }} />
               ) : (
-                <Moon className="h-5 w-5 text-gray-600" />
+                <Moon className="h-5 w-5" style={{ color: '#F9FAFB' }} />
               )}
             </button>
 
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="relative p-2 rounded-lg transition-all duration-200 hover:scale-110"
+              style={{ backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <Heart className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+              <Heart className="h-5 w-5" style={{ color: '#F9FAFB' }} />
               {wishlistCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {wishlistCount}
@@ -93,11 +111,16 @@ const Navbar = () => {
             {/* Cart */}
             <Link
               to="/cart"
-              className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="relative p-2 rounded-lg transition-all duration-200 hover:scale-110"
+              style={{ backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <ShoppingCart className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+              <ShoppingCart className="h-5 w-5" style={{ color: '#F9FAFB' }} />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+                  style={{ backgroundColor: '#D4AF37', color: '#0F172A' }}
+                >
                   {cartItemsCount}
                 </span>
               )}
@@ -108,26 +131,37 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="flex items-center space-x-2 p-2 rounded-lg transition-all duration-200"
+                  style={{ backgroundColor: 'transparent' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
                   {user?.avatar ? (
                     <img src={user.avatar} alt={user.name} className="h-8 w-8 rounded-full" />
                   ) : (
-                    <User className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                    <User className="h-5 w-5" style={{ color: '#F9FAFB' }} />
                   )}
-                  <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span className="hidden sm:block text-sm font-medium" style={{ color: '#F9FAFB' }}>
                     {user?.name}
                   </span>
-                  <ChevronDown className="h-4 w-4 text-gray-500" />
+                  <ChevronDown className="h-4 w-4" style={{ color: '#9CA3AF' }} />
                 </button>
 
                 {/* Dropdown */}
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1">
+                  <div className="absolute right-0 mt-2 w-48 rounded-lg py-1 shadow-xl"
+                    style={{ 
+                      backgroundColor: '#111827', 
+                      border: '1px solid rgba(212, 175, 55, 0.3)'
+                    }}
+                  >
                     <Link
                       to="/dashboard"
                       onClick={() => setIsProfileOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="flex items-center px-4 py-2 text-sm transition-all duration-200"
+                      style={{ color: '#F9FAFB' }}
+                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
                     >
                       <LayoutDashboard className="h-4 w-4 mr-2" />
                       Dashboard
@@ -136,7 +170,10 @@ const Navbar = () => {
                       <Link
                         to="/admin"
                         onClick={() => setIsProfileOpen(false)}
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center px-4 py-2 text-sm transition-all duration-200"
+                        style={{ color: '#F9FAFB' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
                       >
                         <LayoutDashboard className="h-4 w-4 mr-2" />
                         Admin Panel
@@ -144,7 +181,10 @@ const Navbar = () => {
                     )}
                     <button
                       onClick={handleLogout}
-                      className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="flex items-center w-full px-4 py-2 text-sm transition-all duration-200"
+                      style={{ color: '#EF4444' }}
+                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.1)'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
                     >
                       <LogOut className="h-4 w-4 mr-2" />
                       Logout
@@ -156,13 +196,20 @@ const Navbar = () => {
               <div className="hidden md:flex items-center space-x-2">
                 <Link
                   to="/login"
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium px-3 py-2"
+                  className="font-medium px-3 py-2 transition-all duration-200"
+                  style={{ color: '#F9FAFB' }}
+                  onMouseEnter={(e) => e.target.style.color = '#D4AF37'}
+                  onMouseLeave={(e) => e.target.style.color = '#F9FAFB'}
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="btn-primary text-sm"
+                  className="text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
+                    color: '#0F172A'
+                  }}
                 >
                   Sign Up
                 </Link>
@@ -172,12 +219,15 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="md:hidden p-2 rounded-lg transition-all duration-200"
+              style={{ backgroundColor: 'transparent' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                <X className="h-6 w-6" style={{ color: '#F9FAFB' }} />
               ) : (
-                <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                <Menu className="h-6 w-6" style={{ color: '#F9FAFB' }} />
               )}
             </button>
           </div>
@@ -185,14 +235,17 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden py-4" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}>
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="font-medium px-3 py-2 rounded-lg transition-all duration-200"
+                  style={{ color: '#F9FAFB' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)'; e.currentTarget.style.color = '#D4AF37'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F9FAFB'; }}
                 >
                   {link.label}
                 </Link>
@@ -202,14 +255,21 @@ const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-gray-700 dark:text-gray-300 font-medium px-3 py-2"
+                    className="font-medium px-3 py-2 transition-all duration-200"
+                    style={{ color: '#F9FAFB' }}
+                    onMouseEnter={(e) => e.target.style.color = '#D4AF37'}
+                    onMouseLeave={(e) => e.target.style.color = '#F9FAFB'}
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setIsMenuOpen(false)}
-                    className="btn-primary text-center mx-3"
+                    className="text-center mx-3 text-sm font-medium px-4 py-2 rounded-lg"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
+                      color: '#0F172A'
+                    }}
                   >
                     Sign Up
                   </Link>
