@@ -1,16 +1,8 @@
 /**
- * UI Component Library
- * Phase 1: Structure Setup
- * 
- * This folder will contain reusable UI components:
- * - Button (variants: primary, secondary, ghost, danger)
- * - Card (product card, info card)
- * - Input (form inputs with dark theme)
- * - Badge (status badges)
- * - Modal (dialogs and overlays)
- * 
- * Phase 2 will implement each component.
+ * UI Components - Design System
+ * Premium Component Library
  */
 
-// Export placeholder for Phase 2
-export const UI_COMPONENTS_READY = true;
+export { default as Button } from './Button/Button.jsx';
+export { default as Card } from './Card/Card.jsx';
+export { default as Badge } from './Badge/Badge.jsx';
