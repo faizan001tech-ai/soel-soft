@@ -139,19 +139,19 @@ const Hero = () => {
                     Premium Fashion
                   </span>
                 </div>
-                <h1 className="hero-animate hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 md:mb-4">
+                <h1 className="hero-animate hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 md:mb-4 text-white drop-shadow-lg">
                   {slide.title}
                 </h1>
-                <p className="hero-animate hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8">
+                <p className="hero-animate hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mb-4 md:mb-8 max-w-xl drop-shadow-md">
                   {slide.subtitle}
                 </p>
                 <div className="hero-animate hero-cta">
                   <Link
                     to={slide.link}
-                    className="inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base"
+                    className="group inline-flex items-center px-5 sm:px-7 md:px-9 py-2.5 sm:py-3.5 md:py-4 bg-white text-gray-900 hover:bg-primary-600 hover:text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
                     {slide.cta}
-                    <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -168,9 +168,10 @@ const PrevArrow = (props) => {
   return (
     <button
       onClick={onClick}
-      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full transition-colors"
+      className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 p-3 md:p-4 bg-white/90 hover:bg-white text-gray-800 hover:text-primary-600 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:scale-110 border border-gray-200"
+      aria-label="Previous slide"
     >
-      <ChevronLeft className="h-6 w-6 text-white" />
+      <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" strokeWidth={2.5} />
     </button>
   );
 };
@@ -180,9 +181,10 @@ const NextArrow = (props) => {
   return (
     <button
       onClick={onClick}
-      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full transition-colors"
+      className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 p-3 md:p-4 bg-white/90 hover:bg-white text-gray-800 hover:text-primary-600 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:scale-110 border border-gray-200"
+      aria-label="Next slide"
     >
-      <ChevronRight className="h-6 w-6 text-white" />
+      <ChevronRight className="h-5 w-5 md:h-6 md:w-6" strokeWidth={2.5} />
     </button>
   );
 };
