@@ -101,6 +101,10 @@ const Hero = () => {
     cssEase: 'linear',
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    dotsClass: 'slick-dots custom-dots',
+    customPaging: (i) => (
+      <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 cursor-pointer" />
+    ),
     beforeChange: (current, next) => {
       gsap.fromTo(
         slidesRef.current[next]?.querySelectorAll('.hero-animate'),
@@ -190,3 +194,45 @@ const NextArrow = (props) => {
 };
 
 export default Hero;
+
+// Custom styles for slick dots
+const customDotsStyles = `
+  .custom-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+  }
+  .custom-dots li {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+  .custom-dots li button {
+    background: transparent !important;
+    border: none;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+  .custom-dots li button:before {
+    display: none;
+  }
+  .custom-dots li.slick-active div {
+    background-color: white !important;
+    transform: scale(1.2);
+  }
+`;
+
+// Add styles to document
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style');
+  styleElement.innerHTML = customDotsStyles;
+  document.head.appendChild(styleElement);
+}
