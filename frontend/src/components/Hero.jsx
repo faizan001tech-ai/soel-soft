@@ -27,7 +27,7 @@ const Hero = () => {
     },
     {
       id: 3,
-      title: 'Men\'s Premium',
+      title: 'Woman\'s Premium',
       subtitle: 'Exclusive men\'s collection with premium quality and modern designs.',
       image: '/images/hero/slide-2-men.png',
       cta: 'Shop Premium',
