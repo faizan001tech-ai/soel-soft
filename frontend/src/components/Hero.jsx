@@ -27,6 +27,14 @@ const Hero = () => {
     },
     {
       id: 3,
+      title: 'Men\'s Premium',
+      subtitle: 'Exclusive men\'s collection with premium quality and modern designs.',
+      image: '/images/hero/slide-2-men.png',
+      cta: 'Shop Premium',
+      link: '/shop?category=men',
+    },
+    {
+      id: 4,
       title: 'Women\'s Collection',
       subtitle: 'Stunning women\'s collection. Heels, flats, boots, and sneakers for the modern woman.',
       image: '/images/hero/slide-3-women.jpg',
@@ -34,7 +42,7 @@ const Hero = () => {
       link: '/shop?category=women',
     },
     {
-      id: 4,
+      id: 5,
       title: 'Sneaker Culture',
       subtitle: 'Trendy and comfortable sneakers for the whole family. Walk in style, walk in comfort.',
       image: '/images/hero/slide-4-sneakers.png',
@@ -42,7 +50,7 @@ const Hero = () => {
       link: '/shop?category=sneakers',
     },
     {
-      id: 5,
+      id: 6,
       title: 'Party Wear',
       subtitle: 'Make a statement with our party collection. Shine bright at every special occasion.',
       image: '/images/hero/slide-5-party.png',
@@ -50,7 +58,7 @@ const Hero = () => {
       link: '/shop?category=party',
     },
     {
-      id: 6,
+      id: 7,
       title: 'Complete Collection',
       subtitle: 'Everything you need in one place. Explore our complete range of footwear for all ages.',
       image: '/images/hero/slide-6-collection.png',
