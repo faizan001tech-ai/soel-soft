@@ -130,8 +130,8 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-              <div className="max-w-xl text-white">
+            <div className="relative h-full max-w-7xl mx-auto px-16 sm:px-20 lg:px-24 flex items-center">
+              <div className="max-w-lg text-white">
                 {/* Logo */}
                 <div className="hero-animate flex items-center space-x-2 mb-2 md:mb-4">
                   <ShoppingBag className="h-4 w-4 md:h-5 md:w-5 text-primary-400" />
@@ -139,19 +139,19 @@ const Hero = () => {
                     Premium Fashion
                   </span>
                 </div>
-                <h1 className="hero-animate hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 md:mb-4 text-white drop-shadow-lg">
+                <h1 className="hero-animate hero-title text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-2 md:mb-4 text-white drop-shadow-lg">
                   {slide.title}
                 </h1>
-                <p className="hero-animate hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mb-4 md:mb-8 max-w-xl drop-shadow-md">
+                <p className="hero-animate hero-subtitle text-xs sm:text-sm md:text-base lg:text-lg text-gray-100 mb-3 md:mb-6 max-w-lg drop-shadow-md">
                   {slide.subtitle}
                 </p>
                 <div className="hero-animate hero-cta">
                   <Link
                     to={slide.link}
-                    className="group inline-flex items-center px-5 sm:px-7 md:px-9 py-2.5 sm:py-3.5 md:py-4 bg-white text-gray-900 hover:bg-primary-600 hover:text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                    className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-3.5 bg-white text-gray-900 hover:bg-primary-600 hover:text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-xs sm:text-sm md:text-base"
                   >
                     {slide.cta}
-                    <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
